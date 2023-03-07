@@ -1,0 +1,25 @@
+
+<nav>
+    <div class="card">
+        <div class="flex card-container overflow-hidden">
+            <div class="flex-none flex align-items-center justify-content-center  font-bold text-white text-bold m-2 px-5 py-3 border-round">Dashboard</div>
+            <div class="flex-grow-1 flex align-items-center justify-content-center  font-bold text-white  text-bold m-2 px-5 py-3 border-round">Home</div>
+            <div class="flex-none flex align-items-center justify-content-center  font-bold text-white m-2 px-5 py-3 border-round">
+                <button class="button" pButton (click)="onLogout()" class="no-underline text-black-500 text-base text-white no-decoration">Logout</button>
+            </div>
+        </div>
+    </div>       
+</nav>
+<div class="main-dashboard">
+    <div class="grid">
+       <div class="col-10">
+         <div class="card p-5" >
+           <div *ngFor="let x of dashboardData">
+               <p>Token:<mark>{{x.token}}</mark></p>
+               <h3>Expires In:<mark>{{x.expiresIn}}</mark></h3>
+               <h3>User Name:<mark>{{x.user.username}}</mark></h3>
+           </div>
+         </div>
+       </div>
+    </div>
+</div>

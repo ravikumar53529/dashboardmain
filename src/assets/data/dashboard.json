@@ -1,0 +1,9 @@
+[
+    {
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImpvaG4iLCJpYXQiOjE2MTcwMTUyMTYsImV4cCI6MTYxNzAxODgxNn0.fM5mK_k5o5P-qGbOvn8z-6wHw-MQ2jKgCv1UVEh6N18",
+        "user": {
+          "username": "john"
+        },
+        "expiresIn": "1h"
+      }
+]
