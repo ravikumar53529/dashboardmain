@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardserviceService } from './services/dashboardservice.service';
-
+import {myCanActivateFn} from '../assets/gaurds/auth.guard'
 const routes: Routes = [
   {
     path: '', redirectTo: 'login', pathMatch: 'full'
@@ -13,7 +13,7 @@ const routes: Routes = [
     path:'login',component:LoginComponent
   },
   {
-    path:'dashboard',component:DashboardComponent,canActivate:[DashboardserviceService]
+    path:'dashboard',component:DashboardComponent,canActivate:[myCanActivateFn]
   },
   {
     path:'**',component:LoginComponent

@@ -11,14 +11,20 @@ import {CardModule} from 'primeng/card';
 import {InputTextModule} from 'primeng/inputtext'
 import {ButtonModule} from 'primeng/button';
 import {ReactiveFormsModule} from '@angular/forms';
-
-@NgModule({
+import {MenubarModule} from 'primeng/menubar';
+import {SlideMenuModule} from 'primeng/slidemenu';
+import {TieredMenuModule} from 'primeng/tieredmenu';
+import {PanelMenuModule} from 'primeng/panelmenu';
+import {ChartModule} from 'primeng/chart';
+import {KnobModule} from 'primeng/knob';
+import {CalendarModule} from 'primeng/calendar';
+import {TableModule} from 'primeng/table';
+import {RatingModule} from 'primeng/rating';
+@NgModule({ 
   declarations: [
     AppComponent,
     LoginComponent,
-    DashboardComponent,
-
-    
+    DashboardComponent,  
   ],
   imports: [
     BrowserModule,
@@ -27,8 +33,15 @@ import {ReactiveFormsModule} from '@angular/forms';
     BrowserAnimationsModule,
     CardModule,
     InputTextModule,
-    ButtonModule,ReactiveFormsModule
-    
+    ButtonModule,ReactiveFormsModule,
+    MenubarModule,SlideMenuModule,
+    TieredMenuModule,
+    PanelMenuModule,
+    ChartModule,
+    KnobModule,
+    CalendarModule,
+    TableModule,
+    RatingModule
   ],
   providers: [DashboardserviceService],
   bootstrap: [AppComponent]

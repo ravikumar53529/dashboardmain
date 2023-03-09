@@ -1,28 +1,312 @@
-
-<nav>
-    <div class="card">
-        <div class="flex card-container overflow-hidden">
-            <div class="flex-none flex align-items-center justify-content-center  font-bold text-white text-bold m-2 px-5 py-3 border-round">Dashboard</div>
-            <div class="flex-grow-1 flex align-items-center justify-content-center  font-bold text-white  text-bold m-2 px-5 py-3 border-round">Home</div>
-            <div class="flex-none flex align-items-center justify-content-center  font-bold text-white m-2 px-5 py-3 border-round">
-                <button class="button" pButton (click)="onLogout()" class="no-underline text-black-500 text-base text-white no-decoration">Logout</button>
+<div class="grid">
+  <div class="lg:col-2 xs:col-6">
+    <div [style]="{ 'width': '15%','position':'fixed' }">
+        <p-panelMenu [model]="items" [style]="{ width: '100%' }"></p-panelMenu>
+    </div>
+    
+  </div>
+  <div class="lg:col-10 xs:col-12">
+    <div class="main-dashboard">
+      <p-menubar >
+        <ng-template pTemplate="start">
+          <img src="../../assets/images/OIP.jpg" height="40" class="p-mr-2" />
+        </ng-template>
+        <ng-template pTemplate="end">
+         <p-button (click)="onLogout()"> <i class="pi pi-sign-out"></i>
+         </p-button>
+        </ng-template>
+      </p-menubar>
+      <div class="card">
+        <div *ngFor="let data of dashboardData">
+          <div class="surface-ground px-4 py-5 md:px-6 lg:px-8">
+            <div class="grid">
+              <div class="col-12 md:col-6 lg:col-3">
+                <div class="surface-card shadow-2 p-3 border-round">
+                  <div class="flex justify-content-between mb-3">
+                    <div>
+                      <span class="block text-500 font-medium mb-3"
+                        >Orders</span
+                      >
+                      <div class="text-900 font-medium text-xl">
+                        {{ data.orders }}
+                      </div>
+                    </div>
+                    <div
+                      class="flex align-items-center justify-content-center bg-blue-100 border-round"
+                      style="width: 2.5rem; height: 2.5rem"
+                    >
+                      <i class="pi pi-shopping-cart text-blue-500 text-xl"></i>
+                    </div>
+                  </div>
+                  <span class="text-green-500 font-medium">4 new </span>
+                  <span class="text-500">since last visit</span>
+                </div>
+              </div>
+              <div class="col-12 md:col-6 lg:col-3">
+                <div class="surface-card shadow-2 p-3 border-round">
+                  <div class="flex justify-content-between mb-3">
+                    <div>
+                      <span class="block text-500 font-medium mb-3"
+                        >Revenue</span
+                      >
+                      <div class="text-900 font-medium text-xl">
+                        {{ data.income | currency : "INR" }}
+                      </div>
+                    </div>
+                    <div
+                      class="flex align-items-center justify-content-center bg-orange-100 border-round"
+                      style="width: 2.5rem; height: 2.5rem"
+                    >
+                      <i class="pi pi-map-marker text-orange-500 text-xl"></i>
+                    </div>
+                  </div>
+                  <span class="text-green-500 font-medium">%10+ </span>
+                  <span class="text-500">since last week</span>
+                </div>
+              </div>
+              <div class="col-12 md:col-6 lg:col-3">
+                <div class="surface-card shadow-2 p-3 border-round">
+                  <div class="flex justify-content-between mb-3">
+                    <div>
+                      <span class="block text-500 font-medium mb-3"
+                        >Customers</span
+                      >
+                      <div class="text-900 font-medium text-xl">
+                        {{ data.users }}
+                      </div>
+                    </div>
+                    <div
+                      class="flex align-items-center justify-content-center bg-cyan-100 border-round"
+                      style="width: 2.5rem; height: 2.5rem"
+                    >
+                      <i class="pi pi-inbox text-cyan-500 text-xl"></i>
+                    </div>
+                  </div>
+                  <span class="text-green-500 font-medium">10 </span>
+                  <span class="text-500">newly registered</span>
+                </div>
+              </div>
+              <div class="col-12 md:col-6 lg:col-3">
+                <div class="surface-card shadow-2 p-3 border-round">
+                  <div class="flex justify-content-between mb-3">
+                    <div>
+                      <span class="block text-500 font-medium mb-3"
+                        >Partenrs</span
+                      >
+                      <div class="text-900 font-medium text-xl">
+                        {{ data.partners }}
+                      </div>
+                    </div>
+                    <div
+                      class="flex align-items-center justify-content-center bg-purple-100 border-round"
+                      style="width: 2.5rem; height: 2.5rem"
+                    >
+                      <i class="pi pi-user text-purple-500 text-xl"></i>
+                    </div>
+                  </div>
+                  <span class="text-green-500 font-medium">2 </span>
+                  <span class="text-500">Recently Added</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="flex flex-wrap md:justify-content-between justify-content-center card-container">
+                <div class="surface-500 hover:surface-300 text-white font-bold border-round m-2 flex align-items-center justify-content-center" style="min-width: 200px; min-height: 100px"> <h3>Users:{{data.users}}</h3></div>
+                <div class="bg-cyan-500 text-white font-bold border-round m-2 flex align-items-center justify-content-center" style="min-width: 200px; min-height: 100px">  <h3>Orders:{{data.orders}}</h3></div>
+                <div class="bg-orange-500 text-white font-bold border-round m-2 flex align-items-center justify-content-center" style="min-width: 200px; min-height: 100px"> <h3>Revenue:{{data.income| currency:'INR'}}</h3></div>
+                <div class="bg-blue-800 text-white font-bold border-round m-2 flex align-items-center justify-content-center" style="min-width: 200px; min-height: 100px">
+                    <h3>Partners:{{data.partners}}</h3>
+                </div>
+            </div> -->
+        </div>
+      </div>
+      <!-- <div class="grid">
+           <div class="col-12">
+             <div class="card " >
+               <div *ngFor="let x of dashboardData">
+                   <h2>{{x.dognutData.datasets[0].data}}</h2>    
+               </div>
+             </div>
+           </div>
+        </div> -->
+      <div class="grid">
+        <div class="col-3">
+          <div *ngFor="let data of dashboardData">
+            <p-chart type="doughnut" [data]="data.dognutData"></p-chart>
+          </div>
+        </div>
+        <div class="col-4">
+            <p-calendar [inline]="true" [showWeek]="true"></p-calendar>         
+        </div>
+        <div class="col-5">
+            <div *ngFor="let data of dashboardData ">
+                <div class="card">
+                    <p-chart type="bar" [data]="data.orderedanddelivered"></p-chart>
+                   </div>
             </div>
         </div>
-    </div>       
-</nav>
-<div class="main-dashboard">
-    <div class="grid">
-       <div class="col-10">
-         <div class="card p-5" >
-           <div *ngFor="let x of dashboardData">
-               <p>Token:<mark>{{x.token}}</mark></p>
-               <h3>Expires In:<mark>{{x.expiresIn}}</mark></h3>
-               <h3>User Name:<mark>{{x.user.username}}</mark></h3>
-           </div>
-         </div>
-       </div>
+      </div>
+      <div class="grid">
+        <div class="col-12">
+          <div [style]="{ width: '100%' }">
+            <h1 class="text-align-center">Users table</h1>
+          </div>
+
+          <div *ngFor="let data of dashboardData">
+            <p-table
+              #dt
+              [value]="data.usersdata"
+              [rows]="3"
+              [paginator]="true"
+              [globalFilterFields]="['user', 'place', 'phonenumber','id']"
+              [rowHover]="true"
+              dataKey="id"
+              currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+              [showCurrentPageReport]="true"
+            >
+              <ng-template pTemplate="caption">
+                <div class="p-d-flex p-ai-center p-jc-between">
+                  <span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input
+                      pInputText
+                      type="text"
+                      (input)="
+                        dt.filterGlobal($any($event.target).value, 'contains')
+                      "
+                      placeholder="Search..."
+                    />
+                  </span>
+                </div>
+              </ng-template>
+              <ng-template pTemplate="header">
+                <tr>
+                  <th pSortableColumn="partner">
+                    Id<p-sortIcon field="name"></p-sortIcon>
+                  </th>
+                  <th pSortableColumn="partner">
+                    User<p-sortIcon field="name"></p-sortIcon>
+                  </th>
+                  <th pSortableColumn="price">
+                    Place <p-sortIcon field="price"></p-sortIcon>
+                  </th>
+                  <th pSortableColumn="category">
+                    Order Placed <p-sortIcon field="category"></p-sortIcon>
+                  </th>
+                  <th pSortableColumn="category">
+                    Phone Number <p-sortIcon field="category"></p-sortIcon>
+                  </th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-data>
+                <tr>
+                  <td>{{ data.id }}</td>
+                  <td>{{ data.user | uppercase }}</td>
+                  <td>{{ data.place | uppercase }}</td>
+                  <td>{{ data.orderplaced }}</td>
+                  <td>{{ data.phonenumber | uppercase }}</td>
+                </tr>
+              </ng-template>
+            </p-table>
+          </div>
+          <!-- <p-table [value]="data.usersdata"  styleClass="p-datatable-striped">
+                             <ng-template pTemplate="hedaer">
+                                <tr>
+                                    <th>User</th>
+                                    <th>Place</th>
+                                    <th>Order Placed</th>
+                                    <th>Phone number</th>
+                                </tr>
+                             </ng-template>
+                             <ng-template pTemplate="body" let-data>
+                              <tr>
+                                <td>{{data.user}}</td>
+                                <td>{{data.place}}</td>
+                                <td>{{data.orderplaced}}</td>
+                                <td>{{data.phonenumber}}</td>
+                              </tr>
+                             </ng-template>
+                          </p-table> -->
+        </div>
+
+        <div class="col-12">
+          <h1>Partners table</h1>
+          <div *ngFor="let data of dashboardData">
+            <p-table
+              #dt
+              [value]="data.partnersdata"
+              [rows]="3"
+              [paginator]="true"
+              [globalFilterFields]="['companyname', 'Industry', 'Revenue']"
+              [rowHover]="true"
+              dataKey="id"
+              currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+              [showCurrentPageReport]="true"
+            >
+              <ng-template pTemplate="caption">
+                <div class="p-d-flex p-ai-center p-jc-between">
+                  <span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input
+                      pInputText
+                      type="text"
+                      (input)="
+                        dt.filterGlobal($any($event.target).value, 'contains')
+                      "
+                      placeholder="Search..."
+                    />
+                  </span>
+                </div>
+              </ng-template>
+              <ng-template pTemplate="header">
+                <tr>
+                  <th pSortableColumn="partner">
+                    Name<p-sortIcon field="name"></p-sortIcon>
+                  </th>
+                  <th>Image</th>
+                  <th pSortableColumn="price">
+                    Industry <p-sortIcon field="price"></p-sortIcon>
+                  </th>
+                  <th pSortableColumn="category">
+                    Revenue <p-sortIcon field="category"></p-sortIcon>
+                  </th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-data>
+                <tr>
+                  <td>{{ data.companyname | uppercase }}</td>
+                  <td>
+                    <img
+                      src="{{ data.image }}"
+                      width="100"
+                      class="p-shadow-4"
+                    />
+                  </td>
+                  <td>{{ data.revenue | currency : "USD" }}</td>
+                  <td>{{ data.industry | uppercase }}</td>
+                </tr>
+              </ng-template>
+            </p-table>
+
+            <!-- <p-table [value]="data.partnersdata"  styleClass="p-datatable-striped">
+                       <ng-template pTemplate="hedaer">
+                          <tr>
+                              <th>Company Name</th>
+                              <th>Industry</th>
+                              <th>Revenue</th>
+                          </tr>
+                       </ng-template>
+                       <ng-template pTemplate="body" let-data>
+                        <tr>
+                          <td>{{data.companyname|uppercase}}</td>
+                          <td>{{data.industry|uppercase}}</td>
+                          <td>{{data.revenue}}</td>
+                        </tr>
+                       </ng-template>
+                    </p-table> -->
+          </div>
+        </div>
+      </div>
     </div>
-</div>
-<div>
-    <h1>helllo</h1>
+  </div>
 </div>

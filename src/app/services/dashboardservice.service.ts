@@ -15,16 +15,15 @@ public userAuthentication:boolean=false;
 public temp:string='';
 public tempUserAuthentication:boolean=false
   constructor(private httpRef:HttpClient,private router:Router) { }
-  public canActivate():boolean{
-    const isAuthenticate = localStorage.getItem('isAuthenticate');
-    if(isAuthenticate==='true'){
-      return true
-    }else{
-      this.router.navigateByUrl('/login')
-      return false
-    }
-    
-  }
+  // public canActivate():boolean{
+  //   const isAuthenticate = localStorage.getItem('isAuthenticate');
+  //   if(isAuthenticate==='true'){
+  //     return true
+  //   }else{
+  //     this.router.navigateByUrl('/login')
+  //     return false
+  //   }
+  //   }
   public getCredetentials():Observable<Logindata[]>{
     return this.httpRef.get<Logindata[]>(this.credentialsData)
   }
